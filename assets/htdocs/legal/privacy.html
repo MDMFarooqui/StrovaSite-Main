@@ -1,0 +1,379 @@
+<!DOCTYPE html>
+
+<html lang="en">
+<head>
+<meta charset="utf-8"/>
+<title>Privacy &amp; Security – Strova | www.strova.art</title>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<link href="../style.css" rel="stylesheet"/>
+<link href="../assets/favicon.png" rel="icon" sizes="200x200" type="image/png"/>
+<style>
+    .privacy-layout {
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+      display: grid;
+      grid-template-columns: 260px 1fr;
+      gap: 4rem;
+      align-items: start;
+    }
+
+    .toc {
+      position: sticky;
+      top: 100px;
+      padding: 1.5rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+    }
+
+    .toc h3 {
+      font-size: 0.8rem;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--border-1);
+    }
+
+    .toc ul {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+    }
+
+    .toc a {
+      color: var(--text-muted);
+      text-decoration: none;
+      font-size: 0.9rem;
+      display: block;
+      padding: 0.4rem 0;
+      transition: color 0.2s ease;
+      border-left: 2px solid transparent;
+      padding-left: 0.75rem;
+      margin-left: -0.75rem;
+    }
+
+    .toc a:hover,
+    .toc a.active {
+      color: var(--strova-accent);
+      border-left-color: var(--strova-accent);
+    }
+
+    .privacy-content {
+      max-width: 680px;
+    }
+
+    .privacy-content h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 0.5rem;
+      background: linear-gradient(90deg, var(--text-main), var(--text-muted));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .privacy-content .lead {
+      font-size: 1.25rem;
+      color: var(--strova-accent);
+      margin-bottom: 3rem;
+      line-height: 1.5;
+    }
+
+    .privacy-content h2 {
+      font-size: 1.4rem;
+      color: var(--text-main);
+      margin: 3rem 0 1rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid var(--border-1);
+    }
+
+    .privacy-content h3 {
+      font-size: 1.1rem;
+      color: var(--strova-cyan);
+      margin: 2rem 0 0.75rem;
+    }
+
+    .privacy-content p {
+      color: var(--text-muted);
+      margin-bottom: 1.25rem;
+      line-height: 1.8;
+    }
+
+    .privacy-content ul {
+      color: var(--text-muted);
+      margin: 1rem 0 1.5rem 1.5rem;
+      line-height: 1.8;
+    }
+
+    .privacy-content li {
+      margin-bottom: 0.5rem;
+    }
+
+    .privacy-content strong {
+      color: var(--text-main);
+      font-weight: 500;
+    }
+
+    .highlight-box {
+      background: var(--surface-2);
+      border-left: 3px solid var(--strova-accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: var(--text-main);
+    }
+
+    .check-item {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      margin-bottom: 1rem;
+      color: var(--text-muted);
+    }
+
+    .check-item::before {
+      content: "✓";
+      color: var(--strova-accent);
+      font-weight: bold;
+      flex-shrink: 0;
+    }
+
+    .last-updated {
+      margin-top: 4rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--border-1);
+      color: var(--text-muted);
+      font-size: 0.9rem;
+    }
+
+    @media (max-width: 900px) {
+      .privacy-layout {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+      }
+      
+      .toc {
+        position: static;
+        order: -1;
+      }
+      
+      .toc ul {
+        display: grid;
+        grid-template-columns: repeat(2, 1fr);
+      }
+    }
+
+    @media (max-width: 500px) {
+      .toc ul {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+<header>
+<div class="nav">
+<a class="logo" href="../index.html">
+<img alt="Strova logo" src="../assets/strova.png"/>
+</a>
+<nav aria-label="Main navigation" class="nav-links">
+<a href="../features.html">Features</a>
+<a href="../flow.html">Flow tech</a>
+<a href="../roadmap.html">Roadmap</a>
+<!--<a href="../download.html">Download</a>-->
+</nav>
+</div>
+</header>
+<main>
+<div class="privacy-layout">
+<nav aria-label="Table of contents" class="toc">
+<h3>Contents</h3>
+<ul>
+<li><a href="#overview">Overview</a></li>
+<li><a href="#collect">What We Collect</a></li>
+<li><a href="#dont-collect">What We Don't Collect</a></li>
+<li><a href="#local">Local-First Design</a></li>
+<li><a href="#opensource">Open Source Guarantee</a></li>
+<li><a href="#network">Network Activity</a></li>
+<li><a href="#crash">Crash Reports</a></li>
+<li><a href="#third">Third Parties</a></li>
+<li><a href="#your-rights">Your Rights</a></li>
+<li><a href="#changes">Changes</a></li>
+<li><a href="#contact">Contact</a></li>
+</ul>
+</nav>
+<article class="privacy-content">
+<h1>Privacy &amp; Security</h1>
+<p class="lead">We don't want your data. We don't have your data. Here's exactly what that means.</p>
+<h2 id="overview">Overview</h2>
+<p>Strova is free, open-source animation software licensed under GPL v3. We're not a corporation trying to monetize your information. We're not a startup preparing for acquisition. We're builders who hate the modern internet's surveillance economy as much as you do.</p>
+<p>This document explains in plain English what information flows through Strova, where it goes, and why. No legal jargon. No hidden clauses. If anything here is unclear, <a href="#contact" style="color: var(--strova-cyan);">tell us</a> and we'll fix it.</p>
+<div class="highlight-box">
+<p><strong>The one-sentence version:</strong> Strova runs entirely on your computer, collects nothing by default, and only talks to our servers when you explicitly ask it to (like checking for updates).</p>
+</div>
+<h2 id="collect">What We Collect</h2>
+<p>When you download Strova from www.strova.art, we see:</p>
+<ul>
+<li>Your IP address (standard server logs, deleted after 30 days)</li>
+<li>Which version you downloaded</li>
+<li>Your operating system (from the user agent string)</li>
+</ul>
+<p>That's it. We use this to count downloads and see which platforms need more attention. We don't sell this data. We don't feed it to machine learning models. We don't share it with partners because we don't have any.</p>
+<h2 id="dont-collect">What We Don't Collect</h2>
+<p>Let's be exhaustive here because this matters:</p>
+<div class="check-item">We don't collect your name, email, or any account information</div>
+<div class="check-item">We don't collect your animations, drawings, or project files</div>
+<div class="check-item">We don't collect your usage patterns or which features you use</div>
+<div class="check-item">We don't collect your computer's hardware specifications beyond OS type</div>
+<div class="check-item">We don't collect your location beyond what your IP address reveals</div>
+<div class="check-item">We don't use cookies, tracking pixels, or browser fingerprinting</div>
+<div class="check-item">We don't have user accounts, so we can't leak them</div>
+<h2 id="local">Local-First Design</h2>
+<p>Strova is designed to work without internet. You can animate on an airplane, in a bunker, or on a computer that never touches a network cable. Your .strova project files are plain data that lives where you put them.</p>
+<p>This means:</p>
+<ul>
+<li>No cloud storage that can be hacked or subpoenaed</li>
+<li>No subscription required to access your own work</li>
+<li>No "sync errors" that corrupt your timeline</li>
+<li>No vendor lock-in—your files are yours forever</li>
+</ul>
+<p>We can't delete your work because we never had it. We can't lock you out because there's no account to lock. If we disappear tomorrow, your software keeps working.</p>
+<h2 id="opensource">Open Source Guarantee</h2>
+<p>Strova's entire codebase is public on GitHub. This isn't just marketing—it's a privacy feature. Thousands of developers can (and do) audit every line of code. If we tried to add spyware, someone would notice immediately and we'd be publicly shamed.</p>
+<p>You can verify our claims yourself:</p>
+<ul>
+<li>Check the network tab—see exactly what connections Strova makes</li>
+<li>Build from source—compile your own binary if you don't trust our downloads</li>
+<li>Audit the code—look for any data collection in the C++ source</li>
+<li>Fork the project—remove any feature you don't like</li>
+</ul>
+<p>This is the difference between "trust us" and "verify yourself." We prefer the latter.</p>
+<h2 id="network">Network Activity</h2>
+<p>Strova makes exactly two types of network connections:</p>
+<h3>Update Checks</h3>
+<p>Once per day (only if enabled), Strova pings our server to see if a new version exists. This sends:</p>
+<ul>
+<li>Your current version number</li>
+<li>Your operating system</li>
+<li>Your IP address (unavoidable, not stored)</li>
+</ul>
+<p>You can disable this entirely in Settings → General → "Check for updates automatically."</p>
+<h3>Asset Downloads</h3>
+<p>If you browse and download brushes, palettes, or templates from our built-in asset library, that connection is obvious—you clicked it. We log what was downloaded (to see what's popular) but not who downloaded it.</p>
+<p>That's it. No telemetry. No analytics. No "phoning home" to check your license.</p>
+<h2 id="crash">Crash Reports</h2>
+<p>If Strova crashes, you'll see a dialog asking if you want to send a report. This is <strong>opt-in</strong>, not automatic. If you say yes, we receive:</p>
+<ul>
+<li>The error message and stack trace (what function crashed)</li>
+<li>Your Strova version and operating system version</li>
+<li>A random crash ID (to prevent duplicate reports)</li>
+</ul>
+<p>We explicitly do NOT receive:</p>
+<ul>
+<li>Your project file or any part of it</li>
+<li>Your file names or folder structure</li>
+<li>Screenshots of your work</li>
+<li>Your name, email, or any identifier</li>
+</ul>
+<p>You can disable crash reporting in Settings → Privacy → "Send crash reports."</p>
+<h2 id="third">Third Parties</h2>
+<p>We don't use Google Analytics on our website. We don't embed Facebook pixels. We don't have "social sharing" buttons that track you. Our documentation site has no cookies.</p>
+<p>Our website is static HTML hosted on a server we control. No Cloudflare, no AWS tracking, no third-party JavaScript libraries that could change behavior without our knowledge.</p>
+<p>The only external service we use is GitHub for hosting our source code and issue tracker. When you visit github.com/JHPate1/Strova, you're under GitHub's privacy policy, not ours.</p>
+<h2 id="your-rights">Your Rights</h2>
+<p>Because we don't collect personal data, GDPR "right to be forgotten" requests are technically unnecessary—we have nothing to delete. But if you want confirmation or have concerns:</p>
+<ul>
+<li><strong>Access:</strong> You can see everything we know about you by checking our server logs (email us)</li>
+<li><strong>Deletion:</strong> Ask and we'll delete any server logs containing your IP</li>
+<li><strong>Portability:</strong> Your project files are already portable— they're on your drive</li>
+<li><strong>Objection:</strong> Block our domain in your firewall if you want zero contact</li>
+</ul>
+<h2 id="changes">Changes to This Policy</h2>
+<p>If we ever change this policy, we'll:</p>
+<ul>
+<li>Post the change on our devlog with a clear explanation</li>
+<li>Update the "Last updated" date below</li>
+<li>Never retroactively apply changes to data already collected</li>
+</ul>
+<p>If we ever add data collection (unlikely), it will be opt-in, not buried in an update.</p>
+<h2 id="contact">Contact</h2>
+<p>Questions about this policy? Want to verify our claims? Found something unclear?</p>
+<p>Email: <strong>privacy@strova.art</strong></p>
+<p>GitHub Issues: <strong>github.com/JHPate1/Strova/issues</strong> (public, but you can use a throwaway account)</p>
+<p>Discord: <strong>discord.gg/cerAjyBnXp</strong> (DM a moderator if you need privacy)</p>
+<p>We respond to all privacy inquiries within 48 hours. If we don't, we're either asleep or dead—either way, the code is open for inspection.</p>
+<div class="last-updated">
+<p>Last updated: February 20, 2026</p>
+<p>Effective immediately. Previous versions available on GitHub history.</p>
+</div>
+</article>
+</div>
+</main>
+<footer>
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="../index.html">
+<img alt="Strova" src="../assets/strova.png"/>
+</a>
+<p class="footer-tagline">2D animation studio. Built for speed, precision, and creative freedom.</p>
+<div class="footer-socials">
+<a aria-label="GitHub" href="https://github.com/JHPate1/Strova">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a aria-label="X" href="https://x.com/strova2d">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a aria-label="Discord" href="https://discord.gg/cerAjyBnXp">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</a>
+<a aria-label="YouTube" href="https://www.youtube.com/@StrovaArt">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-col">
+<h4>Product</h4>
+<ul>
+<li><a href="https://strova.art/features.html">Features</a></li>
+<li><a href="https://strova.art/flow.html">Flow Tech</a></li>
+<li><a href="https://strova.art/roadmap.html">Roadmap</a></li>
+<li><a href="https://devlog.strova.art/index.html">Devlog</a></li>
+<li><a href="https://community.strova.art/index.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<ul>
+<li><a href="https://strova.art/company/about.html">About</a></li>
+<li><a href="https://devlog.strova.art/index.html">Blog</a></li>
+<li><a href="https://strova.art/company/careers.html">Careers</a></li>
+<li><a href="https://strova.art/company/contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<ul>
+<li><a href="https://strova.art/legal/privacy.html">Privacy</a></li>
+<li><a href="https://strova.art/legal/terms.html">Terms</a></li>
+<li><a href="https://strova.art/legal/license.html">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-bottom-inner">
+<span>© 2026 Strova – www.strova.art</span>
+<span class="footer-made">Made with love in Canada</span>
+</div>
+</div>
+</footer>
+</body>
+</html>
