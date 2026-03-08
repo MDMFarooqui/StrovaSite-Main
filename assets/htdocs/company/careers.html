@@ -1,0 +1,427 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Careers – Strova | www.strova.art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css?v=2">
+  <link rel="icon" type="image/png" sizes="200x200" href="../assets/favicon.png">
+
+  <style>
+    .careers-hero {
+      text-align: center;
+      padding: 4rem 1.25rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .careers-hero h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--strova-accent), var(--strova-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .careers-hero .lead {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .careers-content {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem;
+    }
+
+    .intro-block {
+      margin-bottom: 3rem;
+    }
+
+    .intro-block p {
+      color: var(--text-muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-box {
+      background: var(--surface-2);
+      border-left: 3px solid var(--strova-accent);
+      padding: 1.5rem;
+      margin: 2rem 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+
+    .highlight-box p {
+      margin: 0;
+      color: var(--text-main);
+      font-size: 1.1rem;
+    }
+
+    .roles-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .role-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+      padding: 1.75rem;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .role-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-deep);
+    }
+
+    .role-icon {
+      font-size: 2rem;
+      margin-bottom: 1rem;
+    }
+
+    .role-card h3 {
+      font-size: 1.2rem;
+      color: var(--text-main);
+      margin-bottom: 0.5rem;
+    }
+
+    .role-card p {
+      color: var(--text-muted);
+      font-size: 0.95rem;
+      line-height: 1.6;
+      margin-bottom: 1rem;
+    }
+
+    .role-meta {
+      font-size: 0.8rem;
+      color: var(--strova-accent);
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .how-to-join {
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+    }
+
+    .how-to-join h2 {
+      font-size: 1.3rem;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .how-to-join h2::before {
+      content: '';
+      width: 4px;
+      height: 1.2em;
+      background: var(--strova-accent);
+      border-radius: 2px;
+    }
+
+    .step-list {
+      list-style: none;
+      counter-reset: step;
+    }
+
+    .step-list li {
+      position: relative;
+      padding-left: 3rem;
+      margin-bottom: 1.5rem;
+      color: var(--text-muted);
+      line-height: 1.7;
+    }
+
+    .step-list li::before {
+      counter-increment: step;
+      content: counter(step);
+      position: absolute;
+      left: 0;
+      top: 0;
+      width: 2rem;
+      height: 2rem;
+      background: var(--surface-3);
+      border: 1px solid var(--border-1);
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--strova-accent);
+      font-weight: 600;
+      font-size: 0.9rem;
+    }
+
+    .perks-section {
+      margin: 3rem 0;
+    }
+
+    .perks-section h2 {
+      font-size: 1.3rem;
+      color: var(--text-main);
+      margin-bottom: 1.5rem;
+    }
+
+    .perks-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1rem;
+    }
+
+    .perk-item {
+      background: var(--surface-3);
+      border: 1px solid var(--border-1);
+      border-radius: 0.75rem;
+      padding: 1.25rem;
+      text-align: center;
+    }
+
+    .perk-item .icon {
+      font-size: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .perk-item p {
+      color: var(--text-muted);
+      font-size: 0.9rem;
+      margin: 0;
+    }
+
+    .cta-box {
+      text-align: center;
+      padding: 3rem 2rem;
+      background: linear-gradient(135deg, rgba(59,167,119,0.1), rgba(56,189,248,0.1));
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+      margin-top: 3rem;
+    }
+
+    .cta-box h2 {
+      font-size: 1.5rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+    }
+
+    .cta-box p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .roles-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .perks-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="../index.html">
+      <img src="../assets/strova.png" alt="Strova logo">
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="../features.html">Features</a>
+      <a href="../flow.html">Flow tech</a>
+      <a href="../roadmap.html">Roadmap</a>
+      <a href="../devlog/index.html">Devlog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="careers-hero">
+    <h1>Join the chaos</h1>
+    <p>We don't have job postings. We have problems that need solving and room for anyone who wants to help.</p>
+  </section>
+
+  <section class="careers-content">
+    
+    <div class="intro-block">
+      <p>Strova is built by three teenagers who bit off more than they can chew—in a good way. We need help. Not employees. Not contractors. Just people who give a shit about animation software and want to make something better exist.</p>
+      
+      <div class="highlight-box">
+        <p>No resumes. No interviews. No HR department. Show us what you can do, and you're in.</p>
+      </div>
+    </div>
+
+    <div class="roles-grid">
+      <div class="role-card">
+        <div class="role-icon">💻</div>
+        <h3>C++ Developers</h3>
+        <p>Help us optimize the canvas engine, fix memory leaks, or implement new tools. Experience with Qt or graphics programming a plus.</p>
+        <span class="role-meta">Open to all levels</span>
+      </div>
+      
+      <div class="role-card">
+        <div class="role-icon">🎨</div>
+        <h3>UI/UX Designers</h3>
+        <p>We need people who understand animation workflows. Design better tool layouts, icon sets, or interaction patterns.</p>
+        <span class="role-meta">Portfolio > degree</span>
+      </div>
+      
+      <div class="role-card">
+        <div class="role-icon">📝</div>
+        <h3>Technical Writers</h3>
+        <p>Documentation is a mess. Help us write tutorials, API docs, or explain Flow technology to normal humans.</p>
+        <span class="role-meta">Clear writing only</span>
+      </div>
+      
+      <div class="role-card">
+        <div class="role-icon">🐛</div>
+        <h3>QA & Testers</h3>
+        <p>Break our software. Report bugs that actually help us fix things. Windows, Linux, and tablet testing needed.</p>
+        <span class="role-meta">Attention to detail</span>
+      </div>
+      
+      <div class="role-card">
+        <div class="role-icon">🌍</div>
+        <h3>Translators</h3>
+        <p>Help localize Strova. We want to support artists who don't speak English as a first language.</p>
+        <span class="role-meta">Native speakers preferred</span>
+      </div>
+      
+      <div class="role-card">
+        <div class="role-icon">🎬</div>
+        <h3>Demo Artists</h3>
+        <p>Create example animations showing what Strova can do. Tutorial videos, showcase reels, or test projects.</p>
+        <span class="role-meta">Show, don't tell</span>
+      </div>
+    </div>
+
+    <div class="how-to-join">
+      <h2>How to actually join</h2>
+      <ul class="step-list">
+        <li><strong>Find something broken or missing.</strong> Check our GitHub issues, try the alpha, or read the roadmap. Find a problem that annoys you.</li>
+        <li><strong>Fix it or propose a fix.</strong> Code a solution, design a mockup, write a draft, or document the bug properly. Do the work first.</li>
+        <li><strong>Show us.</strong> Open a pull request, post in Discord, or email a link. We review everything. If it's good, we merge it.</li>
+        <li><strong>Keep doing that.</strong> There's no "you're hired" moment. Just keep contributing. Eventually we add you to the team chat and you become part of the decision-making.</li>
+      </ul>
+    </div>
+
+    <div class="perks-section">
+      <h2>What you get (honestly)</h2>
+      <div class="perks-grid">
+        <div class="perk-item">
+          <div class="icon">🏆</div>
+          <p>GitHub contribution history that actually matters</p>
+        </div>
+        <div class="perk-item">
+          <div class="icon">📚</div>
+          <p>Learn animation tech from the ground up</p>
+        </div>
+        <div class="perk-item">
+          <div class="icon">🤝</div>
+          <p>Work with other people who care</p>
+        </div>
+        <div class="perk-item">
+          <div class="icon">🎓</div>
+          <p>No degree required, ever</p>
+        </div>
+        <div class="perk-item">
+          <div class="icon">⏰</div>
+          <p>Work on your own schedule</p>
+        </div>
+        <div class="perk-item">
+          <div class="icon">💸</div>
+          <p>No pay (we're broke), but full credit</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="intro-block">
+      <h2 style="font-size: 1.3rem; color: var(--text-main); margin: 2rem 0 1rem;">What we don't want</h2>
+      <p>People looking to pad their resume. People who want to "manage" but not build. People who need constant validation. People who treat open source like free labor for their portfolio.</p>
+      
+      <p>We want people who use Strova, find it frustrating, and decide to make it less frustrating. People who stick around after their first commit. People who argue with us when we're wrong.</p>
+    </div>
+
+    <div class="cta-box">
+      <h2>Still interested?</h2>
+      <p>Don't send us a cover letter. Just go to GitHub, find an issue you can solve, and solve it. Or join Discord and ask where help is needed.</p>
+      <a href="https://github.com/JHPate1/Strova" class="btn btn-primary" style="margin-right: 1rem;">GitHub</a>
+      <a href="#" class="btn btn-secondary">Discord</a>
+    </div>
+
+  </section>
+</main>
+
+<footer>
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="../index.html">
+<img alt="Strova" src="../assets/strova.png"/>
+</a>
+<p class="footer-tagline">2D animation studio. Built for speed, precision, and creative freedom.</p>
+<div class="footer-socials">
+<a aria-label="GitHub" href="https://github.com/JHPate1/Strova">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a aria-label="X" href="https://x.com/strova2d">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a aria-label="Discord" href="https://discord.gg/cerAjyBnXp">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</a>
+<a aria-label="YouTube" href="https://www.youtube.com/@StrovaArt">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-col">
+<h4>Product</h4>
+<ul>
+<li><a href="https://strova.art/features.html">Features</a></li>
+<li><a href="https://strova.art/flow.html">Flow Tech</a></li>
+<li><a href="https://strova.art/roadmap.html">Roadmap</a></li>
+<li><a href="https://devlog.strova.art/index.html">Devlog</a></li>
+<li><a href="https://community.strova.art/index.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<ul>
+<li><a href="https://strova.art/company/about.html">About</a></li>
+<li><a href="https://devlog.strova.art/index.html">Blog</a></li>
+<li><a href="https://strova.art/company/careers.html">Careers</a></li>
+<li><a href="https://strova.art/company/contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<ul>
+<li><a href="https://strova.art/legal/privacy.html">Privacy</a></li>
+<li><a href="https://strova.art/legal/terms.html">Terms</a></li>
+<li><a href="https://strova.art/legal/license.html">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-bottom-inner">
+<span>© 2026 Strova – www.strova.art</span>
+<span class="footer-made">Made with love in Canada</span>
+</div>
+</div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>

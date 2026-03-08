@@ -1,0 +1,406 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>About – Strova | www.strova.art</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="../style.css?v=2">
+  <link rel="icon" type="image/png" sizes="200x200" href="../assets/favicon.png">
+
+  <style>
+    .about-hero {
+      text-align: center;
+      padding: 4rem 1.25rem 2rem;
+      max-width: 800px;
+      margin: 0 auto;
+    }
+
+    .about-hero h1 {
+      font-size: 2.5rem;
+      letter-spacing: 0.04em;
+      margin-bottom: 1rem;
+      background: linear-gradient(90deg, var(--strova-accent), var(--strova-cyan));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .about-hero .lead {
+      font-size: 1.3rem;
+      color: var(--text-muted);
+      line-height: 1.6;
+    }
+
+    .story-section {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 2rem 1.25rem;
+    }
+
+    .story-block {
+      margin-bottom: 3rem;
+    }
+
+    .story-block h2 {
+      font-size: 1.3rem;
+      color: var(--text-main);
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 0.75rem;
+    }
+
+    .story-block h2::before {
+      content: '';
+      width: 4px;
+      height: 1.2em;
+      background: var(--strova-accent);
+      border-radius: 2px;
+    }
+
+    .story-block p {
+      color: var(--text-muted);
+      line-height: 1.9;
+      font-size: 1.05rem;
+      margin-bottom: 1rem;
+    }
+
+    .highlight-quote {
+      background: var(--surface-2);
+      border-left: 3px solid var(--strova-cyan);
+      padding: 1.5rem 1.5rem 1.5rem 2rem;
+      margin: 2rem 0;
+      border-radius: 0 0.5rem 0.5rem 0;
+      position: relative;
+    }
+
+    .highlight-quote::before {
+      content: '"';
+      position: absolute;
+      top: 0.5rem;
+      left: 0.75rem;
+      font-size: 3rem;
+      color: var(--strova-accent);
+      opacity: 0.3;
+      line-height: 1;
+    }
+
+    .highlight-quote p {
+      margin: 0;
+      color: var(--text-main);
+      font-style: italic;
+      position: relative;
+      z-index: 1;
+    }
+
+    .team-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 1.5rem;
+      margin: 2rem 0;
+    }
+
+    .team-card {
+      background: var(--surface-2);
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+      padding: 2rem;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .team-card:hover {
+      transform: translateY(-4px);
+      box-shadow: var(--shadow-deep);
+    }
+
+    .team-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, var(--strova-accent), var(--strova-cyan));
+      opacity: 0;
+      transition: opacity 0.2s ease;
+    }
+
+    .team-card:hover::before {
+      opacity: 1;
+    }
+
+    .team-avatar {
+      width: 80px;
+      height: 80px;
+      background: var(--surface-3);
+      border-radius: 50%;
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.5rem;
+      font-weight: 600;
+      color: var(--text-main);
+      border: 2px solid var(--border-1);
+    }
+
+    .team-card h3 {
+      font-size: 1.1rem;
+      color: var(--text-main);
+      margin-bottom: 0.25rem;
+    }
+
+    .team-card p {
+      font-size: 0.85rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .location-tag {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-size: 0.8rem;
+      color: var(--strova-accent);
+      margin-top: 0.75rem;
+      padding: 0.3rem 0.8rem;
+      background: rgba(59,167,119,0.1);
+      border-radius: 999px;
+    }
+
+    .stats-row {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+      margin: 3rem 0;
+      padding: 2rem;
+      background: var(--surface-2);
+      border: 1px solid var(--border-1);
+      border-radius: 1rem;
+      text-align: center;
+    }
+
+    .stat-item h3 {
+      font-size: 2rem;
+      color: var(--strova-accent);
+      margin-bottom: 0.25rem;
+    }
+
+    .stat-item p {
+      font-size: 0.9rem;
+      color: var(--text-muted);
+      margin: 0;
+    }
+
+    .cta-section {
+      text-align: center;
+      padding: 4rem 1.25rem;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+
+    .cta-section h2 {
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      color: var(--text-main);
+    }
+
+    .cta-section p {
+      color: var(--text-muted);
+      margin-bottom: 1.5rem;
+    }
+
+    @media (max-width: 700px) {
+      .team-grid {
+        grid-template-columns: 1fr;
+      }
+      
+      .stats-row {
+        grid-template-columns: 1fr;
+        gap: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="nav">
+    <a class="logo" href="../index.html">
+      <img src="../assets/strova.png" alt="Strova logo">
+    </a>
+    <nav class="nav-links" aria-label="Main navigation">
+      <a href="../features.html">Features</a>
+      <a href="../flow.html">Flow tech</a>
+      <a href="../roadmap.html">Roadmap</a>
+      <a href="../devlog/index.html">Devlog</a>
+    </nav>
+  </div>
+</header>
+
+<main>
+  <section class="about-hero">
+    <h1>We're just three kids</h1>
+    <p>Three kids in Canada who met and created countless ideas. Now those ideas are finally coming to life.</p>
+  </section>
+
+  <section class="story-section">
+    
+    <div class="story-block">
+      <h2>The beginning</h2>
+      <p>Strova started with three teenagers bouncing ideas in a Discord server. Two of us in Canada, one currently in the USA. We were all animators first, dreamers second. And we were all broke.</p>
+      
+      <p>We'd pirated industry software, paid for subscriptions we couldn't afford, and watched companies buy each other until there were only two options left: Adobe's monopoly or learning Blender and praying.</p>
+
+      <div class="highlight-quote">
+        <p>Animation tools shouldn't require a corporate budget. The best ideas come from bedrooms, not boardrooms.</p>
+      </div>
+    </div>
+
+    <div class="story-block">
+      <h2>Who we are</h2>
+      <p>We're not a startup. Not a company. Just three friends with complementary skills who got tired of waiting for someone else to build what we needed.</p>
+    </div>
+
+    <div class="team-grid">
+      <div class="team-card">
+        <div class="team-avatar">MD</div>
+        <h3>MD</h3>
+        <p>Web Design and Backend</p>
+        <p>Logical Genius</p>
+        <span class="location-tag">🇨🇦 Canada</span>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">RR</div>
+        <h3>RR</h3>
+        <p>UI/UX Development</p>
+        <p>Artist</p>
+        <span class="location-tag">🇨🇦 Canada</span>
+      </div>
+      <div class="team-card">
+        <div class="team-avatar">JP</div>
+        <h3>JP</h3>
+        <p>Engine Backbone and Developer</p>
+        <p>Novice Coder</p>
+        <span class="location-tag">🇺🇸 USA</span>
+      </div>
+    </div>
+
+    <div class="stats-row">
+      <div class="stat-item">
+        <h3>14-15</h3>
+        <p>Age when we started</p>
+      </div>
+      <div class="stat-item">
+        <h3>0</h3>
+        <p>VC funding taken</p>
+      </div>
+      <div class="stat-item">
+        <h3>∞</h3>
+        <p>Ideas that became real</p>
+      </div>
+    </div>
+
+    <div class="story-block">
+      <h2>Why we built this</h2>
+      <p>Corporate animation software has a pattern: get users hooked, raise prices, add AI features nobody asked for, ignore bugs for years. We watched subscription costs triple while innovation stalled.</p>
+      
+      <p>So we started building. Not a startup. Not a product for acquisition. Just software we'd actually want to use—fast, focused, and fair.</p>
+      
+      <p>Flow technology came from our own frustration. We were manually keyframing the same bounces and arcs hundreds of times. There had to be a faster way. Now there is.</p>
+    </div>
+
+    <div class="story-block">
+      <h2>Our stance</h2>
+      <p>Strova will never take venture capital. We won't sell to a bigger company. We won't add AI features that replace artists. We're not building an "ecosystem" to trap you in.</p>
+      
+      <p>We're building the tool we wished existed. If it helps you make something cool, that's enough.</p>
+
+      <div class="highlight-quote">
+        <p>Software doesn't need to be a subscription service. It can just be software.</p>
+      </div>
+    </div>
+
+    <div class="story-block">
+      <h2>What's next</h2>
+      
+      <p>We're not trying to replace industry giants. We're proving that three teenagers with laptops can build something honest in a field full of exploitation.</p>
+      
+      <p>Thanks for caring enough to read this. Try Strova. Break it. Tell us what sucks. We'll fix it.</p>
+    </div>
+
+  </section>
+
+  <section class="cta-section">
+    <h2>Want to know more?</h2>
+    <p>We write about the build process in our devlog. No marketing speak, just what broke and how we fixed it.</p>
+    <a href="https://devlog.strova.art/" class="btn btn-primary">Read the devlog</a>
+  </section>
+
+</main>
+
+<footer>
+<div class="footer-main">
+<div class="footer-brand">
+<a class="footer-logo" href="../index.html">
+<img alt="Strova" src="../assets/strova.png"/>
+</a>
+<p class="footer-tagline">2D animation studio. Built for speed, precision, and creative freedom.</p>
+<div class="footer-socials">
+<a aria-label="GitHub" href="https://github.com/JHPate1/Strova">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"></path></svg>
+</a>
+<a aria-label="X" href="https://x.com/strova2d">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+</a>
+<a aria-label="Discord" href="https://discord.gg/cerAjyBnXp">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M20.317 4.3698a19.7913 19.7913 0 00-4.8851-1.5152.0741.0741 0 00-.0785.0371c-.211.3753-.4447.8648-.6083 1.2495-1.8447-.2762-3.68-.2762-5.4868 0-.1636-.3933-.4058-.8742-.6177-1.2495a.077.077 0 00-.0785-.037 19.7363 19.7363 0 00-4.8852 1.515.0699.0699 0 00-.0321.0277C.5334 9.0458-.319 13.5799.0992 18.0578a.0824.0824 0 00.0312.0561c2.0528 1.5076 4.0413 2.4228 5.9929 3.0294a.0777.0777 0 00.0842-.0276c.4616-.6304.8731-1.2952 1.226-1.9942a.076.076 0 00-.0416-.1057c-.6528-.2476-1.2743-.5495-1.8722-.8923a.077.077 0 01-.0076-.1277c.1258-.0943.2517-.1923.3718-.2914a.0743.0743 0 01.0776-.0105c3.9278 1.7933 8.18 1.7933 12.0614 0a.0739.0739 0 01.0785.0095c.1202.099.246.1981.3728.2924a.077.077 0 01-.0066.1276 12.2986 12.2986 0 01-1.873.8914.0766.0766 0 00-.0407.1067c.3604.698.7719 1.3628 1.225 1.9932a.076.076 0 00.0842.0286c1.961-.6067 3.9495-1.5219 6.0023-3.0294a.077.077 0 00.0313-.0552c.5004-5.177-.8382-9.6739-3.5485-13.6604a.061.061 0 00-.0312-.0286zM8.02 15.3312c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9555-2.4189 2.157-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.9555 2.4189-2.1569 2.4189zm7.9748 0c-1.1825 0-2.1569-1.0857-2.1569-2.419 0-1.3332.9554-2.4189 2.1569-2.4189 1.2108 0 2.1757 1.0952 2.1568 2.419 0 1.3332-.946 2.4189-2.1568 2.4189Z"></path></svg>
+</a>
+<a aria-label="YouTube" href="https://www.youtube.com/@StrovaArt">
+<svg fill="currentColor" viewbox="0 0 24 24"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"></path></svg>
+</a>
+</div>
+</div>
+<div class="footer-links">
+<div class="footer-col">
+<h4>Product</h4>
+<ul>
+<li><a href="https://strova.art/features.html">Features</a></li>
+<li><a href="https://strova.art/flow.html">Flow Tech</a></li>
+<li><a href="https://strova.art/roadmap.html">Roadmap</a></li>
+<li><a href="https://devlog.strova.art/index.html">Devlog</a></li>
+<li><a href="https://community.strova.art/index.html">Community</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Company</h4>
+<ul>
+<li><a href="https://strova.art/company/about.html">About</a></li>
+<li><a href="https://devlog.strova.art/index.html">Blog</a></li>
+<li><a href="https://strova.art/company/careers.html">Careers</a></li>
+<li><a href="https://strova.art/company/contact.html">Contact</a></li>
+</ul>
+</div>
+<div class="footer-col">
+<h4>Legal</h4>
+<ul>
+<li><a href="https://strova.art/legal/privacy.html">Privacy</a></li>
+<li><a href="https://strova.art/legal/terms.html">Terms</a></li>
+<li><a href="https://strova.art/legal/license.html">License</a></li>
+</ul>
+</div>
+</div>
+</div>
+<div class="footer-bottom">
+<div class="footer-bottom-inner">
+<span>© 2026 Strova – www.strova.art</span>
+<span class="footer-made">Made with love in Canada</span>
+</div>
+</div>
+</footer>
+
+<script src="../script.js"></script>
+</body>
+</html>
