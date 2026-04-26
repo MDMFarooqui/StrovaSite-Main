@@ -58,65 +58,47 @@ int main(){
     // Calculate (n0 - n1) mod MOD
     long long diff = (n0_mod - n1_mod + MOD) % MOD;
     
+    long long inv2 = modInv(2, MOD);
+    
     // Calculate nm^K
     long long nm_pow_K = power(nm_mod, K, MOD);
     
-    // Calculate (n0 - n1)^K
+    // Calculate (n0 - n1)^K and (n0 - n1)^(K-1)
     long long diff_pow_K = power(diff, K, MOD);
+    long long diff_pow_K_minus_1 = (K == 1) ? 1 : power(diff, K - 1, MOD);
     
-    long long inv2 = modInv(2, MOD);
+    // nm^(K-1)
+    long long nm_pow_K_minus_1 = (K == 1) ? 1 : power(nm_mod, K - 1, MOD);
     
     // fK(0) = (nm^K + (n0-n1)^K) / 2
     // fK(1) = (nm^K - (n0-n1)^K) / 2
-    
     long long fK0 = ((nm_pow_K + diff_pow_K) % MOD * inv2) % MOD;
     long long fK1 = ((nm_pow_K - diff_pow_K + MOD) % MOD * inv2) % MOD;
     
-    if(K == 1) {
-        // For K=1: vertices are single positions
-        // Independent set is either all even positions or all odd positions
-        // Weight = nm^K * S where S is sum of chosen positions
-        // So max = nm * max(S0, S1)
-        
-        long long W0 = (nm_mod * S0) % MOD;
-        long long W1 = (nm_mod * S1) % MOD;
-        long long culv = max(W0, W1);
-        cout << culv << "\n";
-    } else {
-        // For K >= 2:
-        // Calculate (n0 - n1)^(K-1)
-        long long diff_pow_K_minus_1 = power(diff, K - 1, MOD);
-        
-        // f_{K-1}(0) = (nm^(K-1) + (n0-n1)^(K-1)) / 2
-        // f_{K-1}(1) = (nm^(K-1) - (n0-n1)^(K-1)) / 2
-        
-        long long nm_pow_K_minus_1 = power(nm_mod, K - 1, MOD);
-        
-        long long fK_minus_1_0 = ((nm_pow_K_minus_1 + diff_pow_K_minus_1) % MOD * inv2) % MOD;
-        long long fK_minus_1_1 = ((nm_pow_K_minus_1 - diff_pow_K_minus_1 + MOD) % MOD * inv2) % MOD;
-        
-        // W0 = (NM)^K * K * (S0 * f_{K-1}(0) + S1 * f_{K-1}(1))
-        // W1 = (NM)^K * K * (S0 * f_{K-1}(1) + S1 * f_{K-1}(0))
-        
-        long long S0_times_fK1_0 = (S0 * fK_minus_1_0) % MOD;
-        long long S1_times_fK1_1 = (S1 * fK_minus_1_1) % MOD;
-        long long term0 = (S0_times_fK1_0 + S1_times_fK1_1) % MOD;
-        
-        long long S0_times_fK1_1 = (S0 * fK_minus_1_1) % MOD;
-        long long S1_times_fK1_0 = (S1 * fK_minus_1_0) % MOD;
-        long long term1 = (S0_times_fK1_1 + S1_times_fK1_0) % MOD;
-        
-        long long K_mod = K % MOD;
-        
-        long long W0 = (nm_pow_K * K_mod) % MOD;
-        W0 = (W0 * term0) % MOD;
-        
-        long long W1 = (nm_pow_K * K_mod) % MOD;
-        W1 = (W1 * term1) % MOD;
-        
-        long long culv = max(W0, W1);
-        cout << culv << "\n";
-    }
+    // f_{K-1}(0) = (nm^(K-1) + (n0-n1)^(K-1)) / 2
+    // f_{K-1}(1) = (nm^(K-1) - (n0-n1)^(K-1)) / 2
+    long long fK_minus_1_0 = ((nm_pow_K_minus_1 + diff_pow_K_minus_1) % MOD * inv2) % MOD;
+    long long fK_minus_1_1 = ((nm_pow_K_minus_1 - diff_pow_K_minus_1 + MOD) % MOD * inv2) % MOD;
+    
+    // Total weight for color class c:
+    // Wc = (NM)^K * K * (S0 * f_{K-1}(c) + S1 * f_{K-1}(1-c))
+    
+    long long K_mod = K % MOD;
+    
+    long long term0 = (S0 * fK_minus_1_0) % MOD;
+    term0 = (term0 + (S1 * fK_minus_1_1) % MOD) % MOD;
+    
+    long long term1 = (S0 * fK_minus_1_1) % MOD;
+    term1 = (term1 + (S1 * fK_minus_1_0) % MOD) % MOD;
+    
+    long long W0 = (nm_pow_K * K_mod) % MOD;
+    W0 = (W0 * term0) % MOD;
+    
+    long long W1 = (nm_pow_K * K_mod) % MOD;
+    W1 = (W1 * term1) % MOD;
+    
+    long long culv = max(W0, W1);
+    cout << culv << "\n";
     
     return 0;
 }
